@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 import edu.hooapps.android.parsenotes.R;
+import edu.hooapps.android.parsenotes.model.Note;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -61,6 +62,13 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            Note test = new Note();
+            test.setTitle("Test");
+            test.setDescription("Testing 1, 2, 3...");
+            test.setIsComplete(false);
+            test.saveInBackground();
+
             return rootView;
         }
     }

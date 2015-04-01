@@ -3,6 +3,9 @@ package edu.hooapps.android.parsenotes;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
+
+import edu.hooapps.android.parsenotes.model.Note;
 
 // Custom Application class to initialize Parse
 // This ensures that Parse is only initialized once during the lifecycle of the app
@@ -11,6 +14,9 @@ public class ParseApplication extends Application {
 
     @Override
     public void onCreate() {
+        // Register subclasses
+        ParseObject.registerSubclass(Note.class);
+
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
 
