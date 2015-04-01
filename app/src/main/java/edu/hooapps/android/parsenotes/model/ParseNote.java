@@ -4,7 +4,7 @@ import com.parse.ParseObject;
 import com.parse.ParseClassName;
 
 @ParseClassName("Note")
-public class Note extends ParseObject {
+public class ParseNote extends ParseObject {
 
     private static final String FIELD_TITLE = "title";
     private static final String FIELD_DESCRIPTION = "description";
