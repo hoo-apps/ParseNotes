@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -44,7 +45,9 @@ public class NoteListFragment extends ListFragment {
         query.findInBackground(new FindCallback<ParseNote>() {
             @Override
             public void done(List<ParseNote> parseNotes, ParseException e) {
-                setListAdapter(new ParseNoteAdapter(context, parseNotes));
+                if (parseNotes != null) {
+                    setListAdapter(new ParseNoteAdapter(context, parseNotes));
+                }
             }
         });
     }
@@ -84,21 +87,21 @@ public class NoteListFragment extends ListFragment {
             holder.title.setText(note.getTitle());
             holder.description.setText(note.getDescription());
             if (note.isComplete()) {
-                holder.card.setCardBackgroundColor(Color.parseColor("#A5D6A7"));
+                holder.container.setBackgroundColor(Color.parseColor("#A5D6A7"));
             } else {
-                holder.card.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                holder.container.setBackgroundColor(Color.parseColor("#FFFFFF"));
             }
             return convertView;
         }
 
         private static class ViewHolder {
             TextView title, description;
-            CardView card;
+            LinearLayout container;
 
             public ViewHolder(View v) {
                 title = (TextView) v.findViewById(R.id.title);
                 description = (TextView) v.findViewById(R.id.description);
-                card = (CardView) v.findViewById(R.id.card);
+                container = (LinearLayout) v.findViewById(R.id.container);
             }
 
         }

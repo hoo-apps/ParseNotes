@@ -10,6 +10,11 @@ public class ParseNote extends ParseObject {
     private static final String FIELD_DESCRIPTION = "description";
     private static final String FIELD_IS_COMPLETE = "isComplete";
 
+    public ParseNote() {
+        // Set isComplete to false initially
+        put(FIELD_IS_COMPLETE, false);
+    }
+
     public String getTitle() {
         return getString(FIELD_TITLE);
     }
